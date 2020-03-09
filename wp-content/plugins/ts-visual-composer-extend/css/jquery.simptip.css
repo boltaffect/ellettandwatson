@@ -1,0 +1,435 @@
+/* SimpTip v1.0.2 (Custom)
+// A simple CSS tooltip made with Sass 
+// source: https://github.com/arashmanteghi/simptip/
+// ducoment: http://arashm.net/lab/simptip/
+// by @ArashManteghi - http://arashm.net */
+
+/********************************* Core ******************************/
+[data-tooltip] {
+    position: relative;
+    display: inline-block;
+}
+[data-tooltip]:before,
+[data-tooltip]:after {
+    position: absolute;
+    visibility: hidden;
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=0);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    filter:alpha(opacity=0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+[data-tooltip]:before {
+    content: '';
+    border: 6px solid transparent;
+}
+[data-tooltip]:after {
+    height: 22px;
+    padding: 11px 11px 0 11px;
+    font-size: 13px;
+    line-height: 11px;
+    content: attr(data-tooltip);
+    white-space: nowrap;
+}
+[data-tooltip].ts-simptip-position-top:before {
+    border-top-color: #323232;
+}
+[data-tooltip].ts-simptip-position-top:after {
+    background-color: #323232;
+    color: #ecf0f1;
+}
+[data-tooltip].ts-simptip-position-bottom:before {
+    border-bottom-color: #323232;
+}
+[data-tooltip].ts-simptip-position-bottom:after {
+    background-color: #323232;
+    color: #ecf0f1;
+}
+[data-tooltip].ts-simptip-position-left:before {
+    border-left-color: #323232;
+}
+[data-tooltip].ts-simptip-position-left:after {
+    background-color: #323232;
+    color: #ecf0f1;
+}
+[data-tooltip].ts-simptip-position-right:before {
+    border-right-color: #323232;
+}
+[data-tooltip].ts-simptip-position-right:after {
+    background-color: #323232;
+    color: #ecf0f1;
+}
+[data-tooltip].ts-simptip-position-top.half-arrow:before {
+    border-right: 7px solid #323232;
+}
+[data-tooltip].ts-simptip-position-bottom.half-arrow:before {
+    border-right: 7px solid #323232;
+}
+[data-tooltip]:hover,
+[data-tooltip]:focus {
+    -moz-opacity: 0.99;
+    -khtml-opacity: 0.99;
+    opacity: 0.99;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=99);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=99);
+    filter:alpha(opacity=99);
+    background-color: transparent;
+    z-index: 99999999;
+}
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after {
+    -moz-opacity: 0.99;
+    -khtml-opacity: 0.99;
+    opacity: 0.99;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=99);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=99);
+    filter:alpha(opacity=99);
+    visibility: visible;
+    z-index: 99999999;
+}
+
+/******************************* Position ****************************/
+.ts-simptip-position-right:before,
+.ts-simptip-position-left:before,
+.ts-simptip-position-right:after,
+.ts-simptip-position-left:after {
+    bottom: 50%;
+}
+.ts-simptip-position-right:before,
+.ts-simptip-position-left:before {
+    margin-bottom: -5px;
+}
+.ts-simptip-position-right:after,
+.ts-simptip-position-left:after {
+    margin-bottom: -14.66667px;
+}
+.half-arrow.ts-simptip-position-right:before,
+.half-arrow.ts-simptip-position-left:before {
+    bottom: 16px;
+    border-style: none;
+    border-top: 7px solid transparent;
+}
+.ts-simptip-multiline.ts-simptip-position-right:before,
+.ts-simptip-multiline.ts-simptip-position-left:before,
+.ts-simptip-multiline.ts-simptip-position-right:after,
+.ts-simptip-multiline.ts-simptip-position-left:after {
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+    transform: translateY(50%);
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+.ts-simptip-multiline.ts-simptip-position-right:before,
+.ts-simptip-multiline.ts-simptip-position-left:before {
+    margin-bottom: 0;
+}
+.ts-simptip-multiline.half-arrow.ts-simptip-position-right:before,
+.ts-simptip-multiline.half-arrow.ts-simptip-position-left:before {
+    margin-bottom: -2px;
+}
+
+.ts-simptip-position-right:before,
+.ts-simptip-position-right:after {
+    left: 100%;
+}
+.ts-simptip-position-right:before {
+    margin-left: -2px;
+}
+.ts-simptip-position-right:after {
+    margin-left: 10px;
+}
+.ts-simptip-position-right.ts-simptip-multiline:before {
+    margin-left: -10px;
+}
+.ts-simptip-position-right.ts-simptip-multiline:after {
+    margin-left: 2px;
+}
+.ts-simptip-position-right.ts-simptip-multiline:hover:before,
+.ts-simptip-position-right.ts-simptip-multiline:hover:after {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px);
+}
+.ts-simptip-position-right.ts-simptip-multiline.half-arrow:before {
+    margin-left: -5px;
+}
+.ts-simptip-position-right.half-arrow:before {
+    margin-left: 3px;
+    border-right: 7px solid #323232;
+}
+
+.ts-simptip-position-left:before, .ts-simptip-position-left:after {
+    right: 100%;
+}
+.ts-simptip-position-left:before {
+    margin-right: -2px;
+}
+.ts-simptip-position-left:after {
+    margin-right: 10px;
+}
+.ts-simptip-position-left.ts-simptip-multiline:before {
+    margin-right: -10px;
+}
+.ts-simptip-position-left.ts-simptip-multiline:after {
+    margin-right: 2px;
+}
+.ts-simptip-position-left.ts-simptip-multiline:hover:before,
+.ts-simptip-position-left.ts-simptip-multiline:hover:after {
+    -webkit-transform: translateX(-10px);
+    -moz-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    -o-transform: translateX(-10px);
+    transform: translateX(-10px);
+}
+.ts-simptip-position-left.ts-simptip-multiline.half-arrow:before {
+    margin-right: -5px;
+}
+.ts-simptip-position-left.half-arrow:before {
+    margin-right: 3px;
+    border-left: 7px solid #323232;
+}
+
+.ts-simptip-position-bottom:before,
+.ts-simptip-position-top:before,
+.ts-simptip-position-bottom:after,
+.ts-simptip-position-top:after {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.ts-simptip-position-bottom:after,
+.ts-simptip-position-top:after {
+    width: auto;
+}
+.half-arrow.ts-simptip-position-bottom:before,
+.half-arrow.ts-simptip-position-top:before {
+    border-style: none;
+    border-right: 7px solid #323232;
+}
+
+.ts-simptip-position-bottom:before,
+.ts-simptip-position-bottom:after {
+    top: 100%;
+}
+.ts-simptip-position-bottom:before {
+    margin-top: -5px;
+}
+.ts-simptip-position-bottom:after {
+    margin-top: 7px;
+}
+.ts-simptip-position-bottom:hover:before,
+.ts-simptip-position-bottom:hover:after {
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+.ts-simptip-position-bottom.ts-simptip-multiline:before {
+    margin-top: -15px;
+}
+.ts-simptip-position-bottom.ts-simptip-multiline:after {
+    margin-top: -3px;
+}
+.ts-simptip-position-bottom.ts-simptip-multiline:hover:before,
+.ts-simptip-position-bottom.ts-simptip-multiline:hover:after {
+    -webkit-transform: translate(-50%, 10px);
+    -moz-transform: translate(-50%, 10px);
+    -ms-transform: translate(-50%, 10px);
+    -o-transform: translate(-50%, 10px);
+    transform: translate(-50%, 10px);
+}
+.ts-simptip-position-bottom.ts-simptip-multiline.half-arrow:before {
+    margin-top: -10px;
+}
+.ts-simptip-position-bottom.half-arrow:before {
+    margin-top: 0;
+    border-top: 7px solid transparent;
+}
+
+.ts-simptip-position-top:before,
+.ts-simptip-position-top:after {
+    bottom: 100%;
+}
+.ts-simptip-position-top:before {
+    margin-bottom: -5px;
+}
+.ts-simptip-position-top:after {
+    margin-bottom: 7px;
+}
+.ts-simptip-position-top:hover:before,
+.ts-simptip-position-top:hover:after {
+    -webkit-transform: translate(-50%, 0px);
+    -moz-transform: translate(-50%, 0px);
+    -ms-transform: translate(-50%, 0px);
+    -o-transform: translate(-50%, 0px);
+    transform: translate(-50%, 0px);
+}
+.ts-simptip-position-top.ts-simptip-multiline:before {
+    margin-bottom: -15px;
+}
+.ts-simptip-position-top.ts-simptip-multiline:after {
+    margin-bottom: -3px;
+}
+.ts-simptip-position-top.ts-simptip-multiline:hover:before,
+.ts-simptip-position-top.ts-simptip-multiline:hover:after {
+    -webkit-transform: translate(-50%, -10px);
+    -moz-transform: translate(-50%, -10px);
+    -ms-transform: translate(-50%, -10px);
+    -o-transform: translate(-50%, -10px);
+    transform: translate(-50%, -10px);
+}
+.ts-simptip-position-top.ts-simptip-multiline.half-arrow:before {
+    margin-bottom: -10px;
+}
+.ts-simptip-position-top.half-arrow:before {
+    margin-bottom: 0;
+    border-bottom: 7px solid transparent;
+}
+
+/******************************* Features ****************************/
+.ts-simptip-multiline:after {
+    height: auto;
+    width: 200px;
+    padding: 11px;
+    line-height: 19px;
+    white-space: normal;
+    word-break: normal;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    box-shadow:2px 2px 2px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.6);
+    -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow:2px 2px 2px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+.ts-simptip-multiline:before,
+.ts-simptip-multiline:after {
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+/**************************** Diverse Colors *************************/
+
+/* Green*/
+.ts-simptip-style-green.ts-simptip-position-top:before {border-top-color: #62c462;}
+.ts-simptip-style-green.ts-simptip-position-top:after {background-color: #62c462; color: #ecf0f1;}
+.ts-simptip-style-green.ts-simptip-position-bottom:before {border-bottom-color: #62c462;}
+.ts-simptip-style-green.ts-simptip-position-bottom:after {background-color: #62c462; color: #ecf0f1;}
+.ts-simptip-style-green.ts-simptip-position-left:before {border-left-color: #62c462;}
+.ts-simptip-style-green.ts-simptip-position-left:after {background-color: #62c462; color: #ecf0f1;}
+.ts-simptip-style-green.ts-simptip-position-right:before {border-right-color: #62c462;}
+.ts-simptip-style-green.ts-simptip-position-right:after {background-color: #62c462; color: #ecf0f1;}
+.ts-simptip-style-green.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #62c462;}
+.ts-simptip-style-green.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #62c462;}
+
+/* Blue */
+.ts-simptip-style-blue.ts-simptip-position-top:before {border-top-color: #5bc0de;}
+.ts-simptip-style-blue.ts-simptip-position-top:after {background-color: #5bc0de;color: #ecf0f1;}
+.ts-simptip-style-blue.ts-simptip-position-bottom:before {border-bottom-color: #5bc0de;}
+.ts-simptip-style-blue.ts-simptip-position-bottom:after {background-color: #5bc0de;color: #ecf0f1;}
+.ts-simptip-style-blue.ts-simptip-position-left:before {border-left-color: #5bc0de;}
+.ts-simptip-style-blue.ts-simptip-position-left:after {background-color: #5bc0de;color: #ecf0f1;}
+.ts-simptip-style-blue.ts-simptip-position-right:before {border-right-color: #5bc0de;}
+.ts-simptip-style-blue.ts-simptip-position-right:after {background-color: #5bc0de;color: #ecf0f1;}
+.ts-simptip-style-blue.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #5bc0de;}
+.ts-simptip-style-blue.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #5bc0de;}
+
+/* Red */
+.ts-simptip-style-red.ts-simptip-position-top:before {border-top-color: #e74c3c;}
+.ts-simptip-style-red.ts-simptip-position-top:after {background-color: #e74c3c; color: #ecf0f1;}
+.ts-simptip-style-red.ts-simptip-position-bottom:before {border-bottom-color: #e74c3c;}
+.ts-simptip-style-red.ts-simptip-position-bottom:after {background-color: #e74c3c; color: #ecf0f1;}
+.ts-simptip-style-red.ts-simptip-position-left:before {border-left-color: #e74c3c;}
+.ts-simptip-style-red.ts-simptip-position-left:after {background-color: #e74c3c; color: #ecf0f1;}
+.ts-simptip-style-red.ts-simptip-position-right:before {border-right-color: #e74c3c;}
+.ts-simptip-style-red.ts-simptip-position-right:after {background-color: #e74c3c; color: #ecf0f1;}
+.ts-simptip-style-red.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #e74c3c;}
+.ts-simptip-style-red.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #e74c3c;}
+
+/* Orange */
+.ts-simptip-style-orange.ts-simptip-position-top:before {border-top-color: #e67e22;}
+.ts-simptip-style-orange.ts-simptip-position-top:after {background-color: #e67e22; color: #ecf0f1;}
+.ts-simptip-style-orange.ts-simptip-position-bottom:before {border-bottom-color: #e67e22;}
+.ts-simptip-style-orange.ts-simptip-position-bottom:after {background-color: #e67e22; color: #ecf0f1;}
+.ts-simptip-style-orange.ts-simptip-position-left:before {border-left-color: #e67e22;}
+.ts-simptip-style-orange.ts-simptip-position-left:after {background-color: #e67e22; color: #ecf0f1;}
+.ts-simptip-style-orange.ts-simptip-position-right:before {border-right-color: #e67e22;}
+.ts-simptip-style-orange.ts-simptip-position-right:after {background-color: #e67e22; color: #ecf0f1;}
+.ts-simptip-style-orange.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #e67e22;}
+.ts-simptip-style-orange.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #e67e22;}
+
+/* Yellow */
+.ts-simptip-style-yellow.ts-simptip-position-top:before {border-top-color: #FFD73A;}
+.ts-simptip-style-yellow.ts-simptip-position-top:after {background-color: #FFD73A; color: #808080;}
+.ts-simptip-style-yellow.ts-simptip-position-bottom:before {border-bottom-color: #FFD73A;}
+.ts-simptip-style-yellow.ts-simptip-position-bottom:after {background-color: #FFD73A; color: #808080;}
+.ts-simptip-style-yellow.ts-simptip-position-left:before {border-left-color: #FFD73A;}
+.ts-simptip-style-yellow.ts-simptip-position-left:after {background-color: #FFD73A; color: #808080;}
+.ts-simptip-style-yellow.ts-simptip-position-right:before {border-right-color: #FFD73A;}
+.ts-simptip-style-yellow.ts-simptip-position-right:after {background-color: #FFD73A; color: #808080;}
+.ts-simptip-style-yellow.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #FFD73A;}
+.ts-simptip-style-yellow.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #FFD73A;}
+
+/* Gray */
+.ts-simptip-style-gray.ts-simptip-position-top:before {border-top-color: #989898;}
+.ts-simptip-style-gray.ts-simptip-position-top:after {background-color: #989898; color: #ecf0f1;}
+.ts-simptip-style-gray.ts-simptip-position-bottom:before {border-bottom-color: #989898;}
+.ts-simptip-style-gray.ts-simptip-position-bottom:after {background-color: #989898; color: #ecf0f1;}
+.ts-simptip-style-gray.ts-simptip-position-left:before {border-left-color: #989898;}
+.ts-simptip-style-gray.ts-simptip-position-left:after {background-color: #989898; color: #ecf0f1;}
+.ts-simptip-style-gray.ts-simptip-position-right:before {border-right-color: #989898;}
+.ts-simptip-style-gray.ts-simptip-position-right:after {background-color: #989898; color: #ecf0f1;}
+.ts-simptip-style-gray.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #989898;}
+.ts-simptip-style-gray.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #989898;}
+
+/* Purple */
+.ts-simptip-style-purple.ts-simptip-position-top:before {border-top-color: #7930b7;}
+.ts-simptip-style-purple.ts-simptip-position-top:after {background-color: #7930b7; color: #ecf0f1;}
+.ts-simptip-style-purple.ts-simptip-position-bottom:before {border-bottom-color: #7930b7;}
+.ts-simptip-style-purple.ts-simptip-position-bottom:after {background-color: #7930b7; color: #ecf0f1;}
+.ts-simptip-style-purple.ts-simptip-position-left:before {border-left-color: #7930b7;}
+.ts-simptip-style-purple.ts-simptip-position-left:after {background-color: #7930b7; color: #ecf0f1;}
+.ts-simptip-style-purple.ts-simptip-position-right:before {border-right-color: #7930b7;}
+.ts-simptip-style-purple.ts-simptip-position-right:after {background-color: #7930b7; color: #ecf0f1;}
+.ts-simptip-style-purple.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #7930b7;}
+.ts-simptip-style-purple.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #7930b7;}
+
+/* Pink */
+.ts-simptip-style-pink.ts-simptip-position-top:before {border-top-color: #FF68FF;}
+.ts-simptip-style-pink.ts-simptip-position-top:after {background-color: #FF68FF; color: #404040;}
+.ts-simptip-style-pink.ts-simptip-position-bottom:before {border-bottom-color: #FF68FF;}
+.ts-simptip-style-pink.ts-simptip-position-bottom:after {background-color: #FF68FF; color: #404040;}
+.ts-simptip-style-pink.ts-simptip-position-left:before {border-left-color: #FF68FF;}
+.ts-simptip-style-pink.ts-simptip-position-left:after {background-color: #FF68FF; color: #404040;}
+.ts-simptip-style-pink.ts-simptip-position-right:before {border-right-color: #FF68FF;}
+.ts-simptip-style-pink.ts-simptip-position-right:after {background-color: #FF68FF; color: #404040;}
+.ts-simptip-style-pink.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #FF68FF;}
+.ts-simptip-style-pink.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #FF68FF;}
+
+/* White */
+.ts-simptip-style-white.ts-simptip-position-top:before {border-top-color: #FFFFFF;}
+.ts-simptip-style-white.ts-simptip-position-top:after {background-color: #FFFFFF; color: #808080;}
+.ts-simptip-style-white.ts-simptip-position-bottom:before {border-bottom-color: #FFFFFF;}
+.ts-simptip-style-white.ts-simptip-position-bottom:after {background-color: #FFFFFF; color: #808080;}
+.ts-simptip-style-white.ts-simptip-position-left:before {border-left-color: #FFFFFF;}
+.ts-simptip-style-white.ts-simptip-position-left:after {background-color: #FFFFFF; color: #808080;}
+.ts-simptip-style-white.ts-simptip-position-right:before {border-right-color: #FFFFFF;}
+.ts-simptip-style-white.ts-simptip-position-right:after {background-color: #FFFFFF; color: #808080;}
+.ts-simptip-style-white.ts-simptip-position-top.half-arrow:before {border-right: 7px solid #FFFFFF;}
+.ts-simptip-style-white.ts-simptip-position-bottom.half-arrow:before {border-right: 7px solid #FFFFFF;}
